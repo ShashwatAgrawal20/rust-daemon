@@ -4,10 +4,8 @@ fn extract_filename(file_path: &str) -> Option<String> {
     let path = Path::new(file_path);
 
     if path.exists() {
-        if let Some(filename) = path.file_name() {
-            if let Some(filename_str) = filename.to_str() {
-                return Some(filename_str.to_string());
-            }
+        if let Some(file) = path.to_str() {
+            return Some(file.to_string());
         }
     }
     None
